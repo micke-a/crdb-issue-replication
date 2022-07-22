@@ -1,0 +1,47 @@
+.gradle
+/build/
+journey-app/build
+spar/build/
+app-common/build/
+app-security/build/
+spring-mvc-scaffold/build/
+
+!gradle/wrapper/gradle-wrapper.jar
+
+## Maven
+target
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+node_modules/
+
+
+/aws-cdk-test
+/terraform/.terraform
+
+/app-common/lombok.config
+/app-security/lombok.config
+/journey-app/lombok.config
+/spar/lombok.config
+/spring-mvc-scaffold/lombok.config

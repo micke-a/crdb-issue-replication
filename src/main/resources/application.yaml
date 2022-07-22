@@ -1,0 +1,43 @@
+spring:
+  application.name: crdb-issue
+  jackson:
+    serialization:
+      indent_output: true
+  datasource:
+    url: "jdbc:postgresql://free-tier7.aws-eu-west-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=C:/dev/checkout/crdb-issue-replication/src/main/resources/root.crt&options=--cluster%3Dsafety-dingo-2920"
+    username: app_user
+    password: ${DB_PASSWORD}
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      connection-timeout: 2500
+      validation-timeout: 2000
+      idle-timeout: 300000
+      max-lifetime: 300000
+      connection-init-sql: set statement_timeout='10s'
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    #optional - show SQL statements in console.
+    show-sql: true
+    properties:
+      hibernate:
+        #optional - enable SQL statements formatting.
+        #format_sql: true
+        #optional - generate statistics to check if L2/query cache is actually being used.
+        generate_statistics: true
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+  flyway:
+    locations: classpath:db/migrations/{vendor}
+    table: flyway_schema_history
+    enabled: true
+
+logging.level:
+  root: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
